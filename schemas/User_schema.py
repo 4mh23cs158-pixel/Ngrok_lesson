@@ -7,3 +7,5 @@ class UserSchema(BaseModel):
 class UserUpdateAPI_KEY(BaseModel):
     API_KEY:str
     
+class user_name(BaseModel):
+    user_name:str

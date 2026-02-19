@@ -41,3 +41,13 @@ def update_user(user_id: int, user: UserUpdateAPI_KEY, db: Session = Depends(get
     user.API_KEY = user_update.API_KEY
     user_repo.update_user(user)
     return user
+
+@router.put("/users/{user_id}/api-key")
+def update_user_api_key(user_id: int, user: UserUpdateAPI_KEY, db: Session = Depends(get_db)):
+    user_repo = UserRepo(db)
+    user = user_repo.get_user_by_id(user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    user.API_KEY = user_update.API_KEY
+    user_repo.update_user(user)
+    return user
